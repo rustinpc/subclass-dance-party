@@ -11,9 +11,3 @@ BlinkyDancer.prototype.step = function(timeBetweenSteps){
   Dancer.prototype.step.call(this, timeBetweenSteps);
 
 };
-
-
-// Call Dancer
-// Define prototype and constructor
-// Move step to be a method
-// Refactor the step function code somehow

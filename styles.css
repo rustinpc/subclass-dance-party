@@ -25,3 +25,11 @@ body, a:link, a:visited, a:active{
   border-radius:10px;
   position:absolute;
 }
+.tinydancer{
+  border:5px solid blue;
+  border-radius:5px;
+}
+.lazydancer {
+  border:20px solid purple;
+  border-radius:20px;
+}
