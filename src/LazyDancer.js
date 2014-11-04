@@ -9,5 +9,7 @@ LazyDancer.prototype.constructor = LazyDancer;
 LazyDancer.prototype.step = function(timeBetweenSteps){
   this.$node.toggle();
   Dancer.prototype.step.call(this, timeBetweenSteps);
-
 };
+// LazyDancer.prototype.lineup = function(left, top) {
+
+// };

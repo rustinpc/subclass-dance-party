@@ -3,6 +3,7 @@ body, html{
 }
 body{
   margin: 0px;
+  background: #444 url(img/Light-Wood-Background.jpg) no-repeat;
   background-color:#444;
   font-size: 18px;
 }
@@ -30,6 +31,11 @@ body, a:link, a:visited, a:active{
   border-radius:5px;
 }
 .lazydancer {
-  border:20px solid purple;
-  border-radius:20px;
+  background-image: url(img/aladdin.png);
+  background-repeat: no-repeat;
+  background-size: 50px 75px;
+  width: 50px;
+  height: 75px;
+  border: 0;
+  border-radius: 0;
 }
