@@ -1,5 +1,5 @@
 var TinyDancer = function(top, left, timeBetweenSteps){
-  Dancer.call(this, top, left, timeBetweenSteps);
+  Dancer.call(this, top, left, timeBetweenSteps, 1, 1);
   this.$node.addClass("tinydancer");
 };
 
@@ -7,7 +7,8 @@ TinyDancer.prototype = Object.create(Dancer.prototype);
 TinyDancer.prototype.constructor = TinyDancer;
 
 TinyDancer.prototype.step = function(timeBetweenSteps){
-  this.$node.toggle();
-  Dancer.prototype.step.call(this, timeBetweenSteps);
-
+  if (!this.pause) {
+    this.$node.toggle();
+    Dancer.prototype.step.call(this, timeBetweenSteps);
+  }
 };

@@ -1,10 +1,13 @@
 // Creates and returns a new dancer object that can step
-var Dancer = function(top, left, timeBetweenSteps){
+var Dancer = function(top, left, timeBetweenSteps, width, height){
   // use jQuery to create an HTML <span> tag
   this.$node = $('<span class="dancer"></span>');
   this.top = top;
   this.left = left;
   this.pause = false;
+  this.width = width;
+  this.height = height;
+  this.originalHeight = height;
   this.timeBetweenSteps = timeBetweenSteps;
   this.setPosition(top, left, "initialize");
   this.step(timeBetweenSteps, top, left);
@@ -62,12 +65,14 @@ Dancer.prototype.calculateMovement = function() {
 };
 
 Dancer.prototype.scaleDancer = function() {
-  var newHeight = 211 * (1-(((735-this.top)/12.8)*.01));
-  var newWidth = newHeight * 0.71;
+
+  var newHeight = this.originalHeight * (1-(((735-this.top)/12.8)*.01));
+  var newWidth = newHeight * this.width/this.height;
 
   this.height = newHeight;
   this.width = newWidth;
 };
+
 Dancer.prototype.animateDancer = function() {
   this.$node.animate({
     left: this.left,

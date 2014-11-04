@@ -24,6 +24,8 @@ body, a:link, a:visited, a:active{
 .dancer{
   border:10px solid red;
   border-radius:10px;
+  height: 1px;
+  width: 1px;
   position:absolute;
 }
 .tinydancer{

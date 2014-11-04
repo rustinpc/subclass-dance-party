@@ -1,8 +1,6 @@
 var LazyDancer = function(top, left, timeBetweenSteps){
-  Dancer.call(this, top, left, timeBetweenSteps);
+  Dancer.call(this, top, left, timeBetweenSteps, 150, 211);
   this.$node.addClass("lazydancer");
-  this.height = 211;
-  this.width = 150;
   this.timeBetweenSteps = (timeBetweenSteps/2)+500;
 };
 
