@@ -5,14 +5,15 @@ $(document).ready(function(){
     //Get the number of dancers
     var numberDancers = window.dancers.length;
     // Get the height of the window
-    var windowHeight = $("body").height();
+    var windowWidth = $("body").width();
     // Determine the equal spacing
-    var spacing = (windowHeight-100)/numberDancers;
+    var spacing = (windowWidth-100)/numberDancers;
     // For each dancer call lineup method with new left position as 50 and the top position to y + spacing
-    var topPosition = 50;
+    var leftPosition = 50;
     for (i = 0; i < window.dancers.length; i++) {
-      window.dancers[i].setPosition(topPosition, 50);
-      topPosition += spacing;
+      window.dancers[i].pause = true;
+      window.dancers[i].setPosition(420, leftPosition, "lineup");
+      leftPosition += spacing;
     }
   });
   $(".addDancerButton").on("click", function(event){
