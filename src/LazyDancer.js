@@ -25,9 +25,24 @@ LazyDancer.prototype.step = function(timeBetweenSteps, top, left){
   }
 
 
+
+  // 735 = 100% // 211px
+  // 350 = 80% // 168px
+
+  // 385px - 70%
+  // 365px - 81%
+  // 0 - 100%
+  // 0 // 0
+
+  var newHeight = 211 * (1-(((735-top)/12.8)*.01));
+  var newWidth = newHeight * 0.71;
+
+
   console.log(left);
 
   this.$node.animate({
+    height: newHeight,
+    width: newWidth,
     left: left,
     top: top,
   }, timeBetweenSteps, function() {
