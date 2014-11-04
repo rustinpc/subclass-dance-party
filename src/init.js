@@ -1,6 +1,20 @@
 $(document).ready(function(){
   window.dancers = [];
 
+  $(".lineup").on("click", function(event){
+    //Get the number of dancers
+    var numberDancers = window.dancers.length;
+    // Get the height of the window
+    var windowHeight = $("body").height();
+    // Determine the equal spacing
+    var spacing = (windowHeight-100)/numberDancers;
+    // For each dancer call lineup method with new left position as 50 and the top position to y + spacing
+    var topPosition = 50;
+    for (i = 0; i < window.dancers.length; i++) {
+      window.dancers[i].setPosition(topPosition, 50);
+      topPosition += spacing;
+    }
+  });
   $(".addDancerButton").on("click", function(event){
     /* This function sets up the click handlers for the create-dancer
      * buttons on index.html. You should only need to make one small change to it.
@@ -27,6 +41,7 @@ $(document).ready(function(){
       $("body").width() * Math.random(),
       Math.random() * 1000
     );
+    window.dancers.push(dancer);
     $('body').append(dancer.$node);
   });
 });
