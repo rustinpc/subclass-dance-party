@@ -33,9 +33,9 @@ body, a:link, a:visited, a:active{
 .lazydancer {
   background-image: url(img/aladdin.png);
   background-repeat: no-repeat;
-  background-size: 50px 75px;
-  width: 50px;
-  height: 75px;
+  background-size: 100% 100%;
+  width: 150px;
+  height: 211px;
   border: 0;
   border-radius: 0;
 }
