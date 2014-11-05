@@ -33,7 +33,6 @@ body, a:link, a:visited, a:active{
   border-radius:5px;
 }
 .lazydancer {
-  background-image: url(img/aladdin.png);
   background-repeat: no-repeat;
   background-size: 100% 100%;
   width: 150px;
@@ -41,3 +40,10 @@ body, a:link, a:visited, a:active{
   border: 0;
   border-radius: 0;
 }
+.aladdin {
+  background-image: url(img/aladdin.png);
+}
+.cinderella {
+  background-image: url(img/cinderella.png);
+}
+

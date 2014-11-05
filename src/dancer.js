@@ -104,13 +104,9 @@ Dancer.prototype.collideDancer = function() {
   // compare each dancers position to every other dancers position
   // if the positions fall within a certain range, make the dancers dissapear
 
-  this.$node.css("background-image", "url(img/cinderella.png)");
+  this.$node.toggleClass('aladdin');
+  this.$node.toggleClass('cinderella');
 
-  // this.$node.animate({
-  //   background: "url(img/cinderella.png)",
-  // }, 500, function() {
-  //   // Animation complete
-  // });
 };
 
 
