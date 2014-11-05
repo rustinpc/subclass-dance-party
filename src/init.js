@@ -62,13 +62,10 @@ $(document).ready(function(){
         topDistance = window.dancers[i].top - window.dancers[j].top
         totalDistance = Math.sqrt(Math.pow(Math.abs(leftDistance),2) + Math.pow(Math.abs(topDistance),2));
 
-        if(totalDistance < 10) {
+        if(totalDistance < 20) {
           window.dancers[i].collideDancer();
           window.dancers[j].collideDancer();
         }
-
-
-
 
       }
     }
