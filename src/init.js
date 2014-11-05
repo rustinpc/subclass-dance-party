@@ -3,8 +3,9 @@ $(document).ready(function(){
   window.dancers = [];
 
   $("body").on("mouseover", ".dancer",function(){
+    debugger;
     $(this).animate({
-      opacity: 0.25
+      left: "+=300"
     }, 2000, function() {
     // Animation complete.
     });
@@ -35,6 +36,7 @@ $(document).ready(function(){
       leftPosition += spacing;
     }
   });
+
   $(".addDancerButton").on("click", function(event){
     var dancerMakerFunctionName = $(this).data("dancer-maker-function-name");
 
@@ -51,8 +53,7 @@ $(document).ready(function(){
     window.dancers.push(dancer);
     $('body').append(dancer.$node);
   });
-
-  setInterval(function() {
+  var checkCollisions = function() {
     var leftDistance;
     var topDistance;
     var totalDistance;
@@ -69,6 +70,10 @@ $(document).ready(function(){
 
       }
     }
+  };
+
+  setInterval(function() {
+    checkCollisions();
   },500);
 
 });
