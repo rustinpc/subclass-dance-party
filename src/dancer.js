@@ -44,7 +44,6 @@ Dancer.prototype.setPosition = function(top, left, action){
     this.top = top;
     this.left = left;
     this.scaleDancer();
-    this.collideDancers();
 
     setTimeout(function() { this.pause = false; this.step(); }.bind(this),2000);
 
