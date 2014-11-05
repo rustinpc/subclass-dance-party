@@ -12,52 +12,34 @@ var Dancer = function(top, left, timeBetweenSteps, width, height){
   this.setPosition(top, left, "initialize");
   this.step(timeBetweenSteps, top, left);
 
-  // $(".dancer").mouseover(function(){
-  //   this.pause = true;
-  // });
-
-  // $(".dancer").mouseout(function(){
-  //   this.pause = false;
-  //   this.step();
-  // });
-
-
-  // For the dancer object
-  // Set a event handler when it's created, to do the following
-  // Onmouseover for all dancers, set pause = true;
-  // Onmouseout set pause = false and call step;
-
-
 };
 
 Dancer.prototype.step = function(){
-
   setTimeout(this.step.bind(this), this.timeBetweenSteps);
-
 };
 
 Dancer.prototype.setPosition = function(top, left, action){
-  // Use css top and left properties to position our <span> tag
-  // where it belongs on the page. See http://api.jquery.com/css/
-  //
   if (action === "lineup") {
     this.top = top;
     this.left = left;
     this.scaleDancer();
-
+    debugger;
     setTimeout(function() { this.pause = false; this.step(); }.bind(this),2000);
 
   }
+
   if (action === "initialize") {
     var styleSettings = {
       top: top,
       left: left
     };
+
     this.$node.css(styleSettings);
   }
 };
 
 Dancer.prototype.calculateMovement = function() {
+
   var left = this.left;
   var top = this.top;
 
@@ -77,6 +59,7 @@ Dancer.prototype.calculateMovement = function() {
 
   this.left = left;
   this.top = top;
+
 };
 
 Dancer.prototype.scaleDancer = function() {
@@ -86,23 +69,22 @@ Dancer.prototype.scaleDancer = function() {
 
   this.height = newHeight;
   this.width = newWidth;
+
 };
 
 Dancer.prototype.animateDancer = function() {
+
   this.$node.animate({
     left: this.left,
     top: this.top,
     height: this.height,
     width: this.width,
-  }, this.timeBetweenSteps, function() {
-    // Animation complete.
-  });
+    }, this.timeBetweenSteps
+  );
+
 };
 
 Dancer.prototype.collideDancer = function() {
-  // call this function on a set interval
-  // compare each dancers position to every other dancers position
-  // if the positions fall within a certain range, make the dancers dissapear
 
   this.$node.toggleClass('aladdin');
   this.$node.toggleClass('cinderella');
@@ -111,8 +93,3 @@ Dancer.prototype.collideDancer = function() {
 
 
 
-// Rename class appropriatly
-// Create the node variable
-// Create the step method
-// Create the setposition method on the prototype
-// Define the $node property correctly

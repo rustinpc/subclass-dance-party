@@ -9,6 +9,8 @@ TinyDancer.prototype.constructor = TinyDancer;
 TinyDancer.prototype.step = function(timeBetweenSteps){
   if (!this.pause) {
     this.$node.toggle();
+    this.scaleDancer();
+    this.animateDancer();
     Dancer.prototype.step.call(this, timeBetweenSteps);
   }
 };

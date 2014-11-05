@@ -3,22 +3,15 @@ $(document).ready(function(){
   window.dancers = [];
 
   $("body").on("mouseover", ".dancer",function(){
-    debugger;
     $(this).animate({
       left: "+=300"
-    }, 2000, function() {
-    // Animation complete.
-    });
+    }, 2000);
   });
 
   $("body").on("click", ".dancer",function(){
     $(this).animate({
-      opacity: 1
-    }, 2000, function() {
-    // Animation complete.
-    });
-    //$(this).pause = false;
-    //$(this).step();
+      opacity: 0.25
+    }, 2000);
   });
 
   $(".lineup").on("click", function(event){
@@ -44,21 +37,24 @@ $(document).ready(function(){
     var dancerMakerFunction = window[dancerMakerFunctionName];
 
     // make a dancer with a random position
-
     var dancer = new dancerMakerFunction(
       (($("body").height()-350) * Math.random())+350,
       $("body").width() * Math.random(),
       Math.random() * 1000
     );
+
     window.dancers.push(dancer);
     $('body').append(dancer.$node);
+
   });
+
   var checkCollisions = function() {
     var leftDistance;
     var topDistance;
     var totalDistance;
     for (var i = 0; i < window.dancers.length - 1; i++) {
       for (var j = i+1; j<window.dancers.length; j++) {
+
         leftDistance = window.dancers[i].left - window.dancers[j].left;
         topDistance = window.dancers[i].top - window.dancers[j].top
         totalDistance = Math.sqrt(Math.pow(Math.abs(leftDistance),2) + Math.pow(Math.abs(topDistance),2));
@@ -67,14 +63,11 @@ $(document).ready(function(){
           window.dancers[i].collideDancer();
           window.dancers[j].collideDancer();
         }
-
       }
     }
   };
 
-  setInterval(function() {
-    checkCollisions();
-  },500);
+  setInterval(function() { checkCollisions(); },500);
 
 });
 
