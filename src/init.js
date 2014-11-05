@@ -1,5 +1,24 @@
 $(document).ready(function(){
+
   window.dancers = [];
+
+  $("body").on("mouseover", ".dancer",function(){
+    $(this).animate({
+      opacity: 0.25
+    }, 2000, function() {
+    // Animation complete.
+    });
+  });
+
+  $("body").on("click", ".dancer",function(){
+    $(this).animate({
+      opacity: 1
+    }, 2000, function() {
+    // Animation complete.
+    });
+    //$(this).pause = false;
+    //$(this).step();
+  });
 
   $(".lineup").on("click", function(event){
     //Get the number of dancers
@@ -10,7 +29,7 @@ $(document).ready(function(){
     var spacing = (windowWidth-100)/numberDancers;
     // For each dancer call lineup method with new left position as 50 and the top position to y + spacing
     var leftPosition = 50;
-    for (i = 0; i < window.dancers.length; i++) {
+    for (var i = 0; i < window.dancers.length; i++) {
       window.dancers[i].pause = true;
       window.dancers[i].setPosition(420, leftPosition, "lineup");
       leftPosition += spacing;
@@ -32,5 +51,28 @@ $(document).ready(function(){
     window.dancers.push(dancer);
     $('body').append(dancer.$node);
   });
+
+  setInterval(function() {
+    var leftDistance;
+    var topDistance;
+    var totalDistance;
+    for (var i = 0; i < window.dancers.length - 1; i++) {
+      for (var j = i+1; j<window.dancers.length; j++) {
+        leftDistance = window.dancers[i].left - window.dancers[j].left;
+        topDistance = window.dancers[i].top - window.dancers[j].top
+        totalDistance = Math.sqrt(Math.pow(Math.abs(leftDistance),2) + Math.pow(Math.abs(topDistance),2));
+
+        if(totalDistance < 10) {
+          window.dancers[i].collideDancer();
+          window.dancers[j].collideDancer();
+        }
+
+
+
+
+      }
+    }
+  },500);
+
 });
 

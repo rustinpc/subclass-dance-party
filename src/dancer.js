@@ -12,6 +12,21 @@ var Dancer = function(top, left, timeBetweenSteps, width, height){
   this.setPosition(top, left, "initialize");
   this.step(timeBetweenSteps, top, left);
 
+  // $(".dancer").mouseover(function(){
+  //   this.pause = true;
+  // });
+
+  // $(".dancer").mouseout(function(){
+  //   this.pause = false;
+  //   this.step();
+  // });
+
+
+  // For the dancer object
+  // Set a event handler when it's created, to do the following
+  // Onmouseover for all dancers, set pause = true;
+  // Onmouseout set pause = false and call step;
+
 
 };
 
@@ -29,7 +44,8 @@ Dancer.prototype.setPosition = function(top, left, action){
     this.top = top;
     this.left = left;
     this.scaleDancer();
-    this.animateDancer();
+    this.collideDancers();
+
     setTimeout(function() { this.pause = false; this.step(); }.bind(this),2000);
 
   }
@@ -80,6 +96,18 @@ Dancer.prototype.animateDancer = function() {
     height: this.height,
     width: this.width,
   }, this.timeBetweenSteps, function() {
+    // Animation complete.
+  });
+};
+
+Dancer.prototype.collideDancer = function() {
+  // call this function on a set interval
+  // compare each dancers position to every other dancers position
+  // if the positions fall within a certain range, make the dancers dissapear
+  console.log(this.$node);
+  this.$node.animate({
+    opacity: 0
+  }, 500, function() {
     // Animation complete.
   });
 };
